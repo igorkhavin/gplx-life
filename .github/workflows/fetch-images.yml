@@ -1,0 +1,44 @@
+name: Fetch images from old WordPress site
+on:
+  push:
+    paths:
+      - .github/workflows/fetch-images.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download images
+        run: |
+          set -u
+          mkdir -p assets/images/theme assets/images/media
+          T=https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images
+          U=https://gplxlife.com/wp-content/uploads/2026/10
+          : > assets/images/fetch-report.txt
+          get() { # url dest
+            code=$(curl -sL -A "Mozilla/5.0" -o "$2" -w "%{http_code}" "$1" || echo 000)
+            if [ "$code" = "200" ] && [ -s "$2" ]; then echo "OK   $code $1" >> assets/images/fetch-report.txt
+            else echo "FAIL $code $1" >> assets/images/fetch-report.txt; rm -f "$2"; fi
+          }
+          for f in placeholder_hero_still.png placeholder_hero_video.mp4 wordmark-v3.png \
+                   programs/program_mens_health.jpg programs/program_womens_health.jpg \
+                   programs/program_weight_management.jpg programs/program_longevity.jpg \
+                   brochure/prog_mens.jpg brochure/prog_womens.jpg brochure/prog_weight.jpg brochure/prog_longevity.jpg; do
+            mkdir -p "assets/images/theme/$(dirname $f)"
+            get "$T/$f" "assets/images/theme/$f"
+          done
+          for f in ai-hero-couple ai-mens-health ai-womens-health ai-weight-management ai-longevity \
+                   ai-couple-home ai-telehealth-call ai-cover-family; do
+            get "$U/$f.png" "assets/images/media/$f.png"
+          done
+          cat assets/images/fetch-report.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add assets/images
+          git commit -m "Add images copied from gplxlife.com" || echo "nothing to commit"
+          git push
