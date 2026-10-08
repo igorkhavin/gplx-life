@@ -1,0 +1,416 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>GPLX Kiosk</title></head><body style="margin:0"><h1>Gym Kiosk</h1>
+
+<div id="gk" class="gk" data-screen="welcome">
+<style>
+.gplx-sticky-cta,.gplx-exit-modal,#wpadminbar{display:none!important}
+html,body{background:#000!important;overflow:hidden!important;overscroll-behavior:none}
+.gk{--gold:#D4A94E;--gold-deep:#B08A3E;--gold-soft:#E8D9B0;--ink:#0F0F0F;--ink2:#1A1A1A;--line:rgba(232,217,176,.18);--muted:rgba(255,255,255,.72);
+position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;overflow:hidden}
+.gk *{box-sizing:border-box;margin:0;padding:0}
+.gk button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+.gk img{display:block;max-width:none}
+.gk-screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s}
+.gk[data-screen="welcome"] .gk-welcome,.gk[data-screen="goals"] .gk-goals,.gk[data-screen="program"] .gk-program{opacity:1;visibility:visible;transition:opacity .35s ease}
+
+/* buttons */
+.gk-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:72px;padding:0 40px;border-radius:999px;font-size:22px;font-weight:700;letter-spacing:.01em;transition:transform .12s ease,background .2s ease}
+.gk-btn:active{transform:scale(.97)}
+.gk .gk-btn--gold{background:linear-gradient(180deg,var(--gold),var(--gold-deep));color:#111;box-shadow:0 10px 30px rgba(212,169,78,.25)}
+.gk .gk-btn--ghost{border:2px solid var(--line);color:#fff;background:rgba(255,255,255,.04)}
+.gk-btn svg{width:26px;height:26px;flex:none}
+
+/* top bar */
+.gk-bar{display:flex;align-items:center;justify-content:space-between;padding:22px 36px;flex:none}
+.gk-bar img{height:58px;width:auto}
+.gk-link{display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 22px;border-radius:999px;border:1.5px solid var(--line);font-size:18px;font-weight:600;color:var(--gold-soft)}
+.gk-link svg{width:20px;height:20px}
+
+/* welcome */
+.gk-welcome{justify-content:flex-end}
+.gk-welcome__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gk-welcome__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.78) 42%,rgba(0,0,0,.25) 75%,rgba(0,0,0,.15) 100%),linear-gradient(0deg,rgba(0,0,0,.6),transparent 40%)}
+.gk-welcome__body{position:relative;padding:0 64px 64px;max-width:760px}
+.gk-welcome__logo{height:150px;width:auto;margin-bottom:36px}
+.gk-eyebrow{font-size:16px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.gk-h1{font-size:64px;line-height:1.02;font-weight:700;letter-spacing:-.02em;margin:14px 0 18px}
+.gk-lede{font-size:22px;line-height:1.45;color:var(--muted);margin-bottom:34px;max-width:600px}
+.gk-fine{margin-top:22px;font-size:15px;color:rgba(255,255,255,.6)}
+.gk-pulse{animation:gkPulse 2.4s ease-in-out infinite}
+@keyframes gkPulse{0%,100%{box-shadow:0 10px 30px rgba(212,169,78,.25)}50%{box-shadow:0 10px 50px rgba(212,169,78,.55)}}
+
+/* goals */
+.gk-goals{background:radial-gradient(1200px 600px at 50% -10%,#1d1810 0%,#000 60%)}
+.gk-goals__head{padding:0 36px 18px;flex:none}
+.gk-h2{font-size:44px;line-height:1.08;font-weight:700;letter-spacing:-.015em}
+.gk-sub{font-size:19px;color:var(--muted);margin-top:8px}
+.gk-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:18px;padding:8px 36px 32px;min-height:0}
+.gk-card{position:relative;border-radius:22px;overflow:hidden;text-align:left;border:1.5px solid var(--line);background:var(--ink2);min-height:0;transition:transform .12s ease}
+.gk-card:active{transform:scale(.97)}
+.gk-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gk-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.05) 100%)}
+.gk-card__body{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;z-index:1}
+.gk-card__title{display:block;font-size:25px;font-weight:700;color:var(--gold-soft);line-height:1.15}
+.gk-card__line{display:block;font-size:16px;color:rgba(255,255,255,.82);margin-top:6px;line-height:1.35}
+.gk-card__go{position:absolute;top:16px;right:16px;z-index:1;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);border:1.5px solid var(--line);display:grid;place-items:center;color:var(--gold)}
+.gk-card__go svg{width:20px;height:20px}
+
+/* program */
+.gk-program{background:#000}
+.gk-prog{flex:1;display:grid;grid-template-columns:44% 1fr;gap:36px;padding:0 36px 32px;min-height:0}
+.gk-prog__photo{position:relative;border-radius:24px;overflow:hidden;border:1.5px solid var(--line);min-height:0}
+.gk-prog__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gk-prog__main{display:flex;flex-direction:column;justify-content:center;min-height:0}
+.gk-prog__lede{font-size:21px;line-height:1.45;color:var(--muted);margin:14px 0 22px}
+.gk-steps{list-style:none;display:grid;gap:12px;margin-bottom:22px}
+.gk-steps li{display:flex;align-items:center;gap:16px;font-size:19px;line-height:1.35}
+.gk-steps b{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(212,169,78,.14);border:1.5px solid rgba(212,169,78,.5);color:var(--gold);font-size:17px}
+.gk-price{display:flex;flex-wrap:wrap;gap:8px 18px;padding:16px 20px;border-radius:16px;background:var(--ink2);border:1px solid var(--line);font-size:17px;color:var(--gold-soft);margin-bottom:24px}
+.gk-price span{white-space:nowrap}
+.gk-actions{display:grid;gap:14px}
+.gk-actions .gk-btn{width:100%}
+.gk-note{font-size:14px;color:rgba(255,255,255,.55);margin-top:14px;line-height:1.45}
+
+/* QR panel */
+.gk-qr{display:none;align-items:center;gap:32px;padding:24px;border-radius:22px;background:var(--ink2);border:1.5px solid rgba(212,169,78,.45)}
+.gk-qr.is-on{display:flex}
+.gk-qr__code{flex:none;width:250px;height:250px;border-radius:14px;overflow:hidden;background:#fff;padding:6px}
+.gk-qr__code svg{width:100%;height:100%;display:block}
+.gk-qr__text h3{font-size:28px;font-weight:700;margin-bottom:10px}
+.gk-qr__text p{font-size:18px;color:var(--muted);line-height:1.45;margin-bottom:16px}
+.gk-actions.is-off{display:none}
+.gk.is-qr .gk-steps,.gk.is-qr .gk-price{display:none}
+.gk-prog__main{overflow:hidden}
+
+/* idle modal */
+.gk-idle{position:absolute;inset:0;z-index:5;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:24px}
+.gk-idle.is-on{display:flex}
+.gk-idle__panel{background:var(--ink2);border:1.5px solid var(--line);border-radius:26px;padding:44px 48px;text-align:center;max-width:520px}
+.gk-idle__panel h3{font-size:32px;font-weight:700;margin-bottom:10px}
+.gk-idle__panel p{font-size:19px;color:var(--muted);margin-bottom:28px}
+.gk-idle__count{color:var(--gold);font-weight:700}
+
+/* portrait iPad */
+@media (orientation:portrait){
+ .gk-welcome__body{padding:0 48px 72px}
+ .gk-welcome__shade{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.8) 45%,rgba(0,0,0,.2) 80%)}
+ .gk-h1{font-size:60px}
+ .gk-grid{grid-template-columns:repeat(2,1fr)}
+ .gk-prog{grid-template-columns:1fr;grid-template-rows:30% 1fr;gap:24px}
+ .gk-prog__main{justify-content:flex-start}
+}
+@media (max-height:700px) and (orientation:landscape){
+ .gk-h1{font-size:50px}.gk-welcome__logo{height:110px;margin-bottom:22px}.gk-h2{font-size:36px}
+ .gk-card__title{font-size:21px}.gk-card__line{display:none}.gk-qr__code{width:200px;height:200px}
+ .gk-steps li{font-size:17px}.gk-prog__lede{font-size:18px;margin:10px 0 16px}
+}
+</style>
+
+<!-- 1. WELCOME -->
+<section class="gk-screen gk-welcome" aria-label="Welcome">
+  <img loading="lazy" decoding="async" class="gk-welcome__bg" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/brochure/prog_mens.jpg" alt="">
+  <div class="gk-welcome__shade"></div>
+  <div class="gk-welcome__body">
+    <img loading="lazy" decoding="async" class="gk-welcome__logo" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
+    <p class="gk-eyebrow">Physician-led care</p>
+    <h1 class="gk-h1">The beginning of a new you.</h1>
+    <p class="gk-lede">Hormones, weight, longevity and more, with a licensed physician reviewing every step. Pick your goal and get started in minutes.</p>
+    <button class="gk-btn gk-btn--gold gk-pulse" data-go="goals">Tap to get started
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <p class="gk-fine">$39.99/mo membership · $30 per doctor consult · charged only after physician approval</p>
+  </div>
+</section>
+
+<!-- 2. GOALS -->
+<section class="gk-screen gk-goals" aria-label="Choose your goal">
+  <div class="gk-bar">
+    <img loading="lazy" decoding="async" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
+    <button class="gk-link" data-go="welcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>Start over</button>
+  </div>
+  <div class="gk-goals__head">
+    <h2 class="gk-h2">What brings you in today?</h2>
+    <p class="gk-sub">Tap the goal that fits you best. You can change it later.</p>
+  </div>
+  <div class="gk-grid" id="gk-grid"></div>
+</section>
+
+<!-- 3. PROGRAM -->
+<section class="gk-screen gk-program" aria-label="Program details">
+  <div class="gk-bar">
+    <button class="gk-link" data-go="goals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All programs</button>
+    <button class="gk-link" data-go="welcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>Start over</button>
+  </div>
+  <div class="gk-prog">
+    <div class="gk-prog__photo"><img loading="lazy" decoding="async" id="gk-p-img" src="" alt=""></div>
+    <div class="gk-prog__main">
+      <p class="gk-eyebrow" id="gk-p-eyebrow">Program</p>
+      <h2 class="gk-h2" id="gk-p-title"></h2>
+      <p class="gk-prog__lede" id="gk-p-lede"></p>
+      <ol class="gk-steps">
+        <li><b>1</b>Complete a short, secure online intake</li>
+        <li><b>2</b>A licensed clinician reviews your answers</li>
+        <li><b>3</b>Treatment only if it&rsquo;s right for you</li>
+      </ol>
+      <div class="gk-price"><span>$39.99/mo membership</span><span>$30 per doctor consult</span><span>Charged only after physician approval</span></div>
+      <div class="gk-actions" id="gk-actions">
+        <button class="gk-btn gk-btn--gold" data-act="qr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          Continue on my phone</button>
+        <button class="gk-btn gk-btn--ghost" data-act="here">Start here on this iPad</button>
+      </div>
+      <div class="gk-qr" id="gk-qr">
+        <div class="gk-qr__code" id="gk-qr-code"></div>
+        <div class="gk-qr__text">
+          <h3>Scan with your phone camera</h3>
+          <p>Open your camera, point it at the code, and tap the link. Your answers stay private on your own phone, and you can finish anytime.</p>
+          <button class="gk-link" data-act="qr-back">Back</button>
+        </div>
+      </div>
+      <p class="gk-note">Not for emergencies. Prescriptions are only provided when a licensed medical provider determines they&rsquo;re appropriate. Individual results vary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- idle check -->
+<div class="gk-idle" id="gk-idle" role="dialog" aria-modal="true" aria-labelledby="gk-idle-t">
+  <div class="gk-idle__panel">
+    <h3 id="gk-idle-t">Still there?</h3>
+    <p>This screen resets in <span class="gk-idle__count" id="gk-idle-n">15</span> seconds.</p>
+    <button class="gk-btn gk-btn--gold" data-act="stay">I&rsquo;m still here</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var IMG = "https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/";
+  var BASE = "../get-started/";
+  var QR = {"trt":"37:fe5164b3fc10f38c906e949660bb743ec675dba24857aec1610d6d07faaaaaafe0087d400096f0e9ed02cebd8c7976dbd4f296babd7ffe05a9d47df7a2b15f719f09102e2eaca4b3ddd00a5e99976187589075fe8e1f29d7a87bf80867b669dfa9345d6523a4f9e2d91878b1841b83022cb04758e6e9369aedf3e249f2d93deab10d751569fa804677d467f8532a6b705951951cba24434fc5d7faf5cfae96a3197704d649ba0fea455da18:708","hrt":"37:fe36ea8bfc112490d06eb0e7a6bb75c325f5dbad8990aec166911d07faaaaaafe01c513100be112ef3e4e65e0241b9bb13eee7f9650e391aef2c9e79ee752eb683b8b7325f74363de5337b9985e6a2c909576992affca7efa0423f141ff155ae6e7e9a5cc02978bea8df62904307f23bdf3e7fbc850e0aeb2aff130eef43cd093f3b25c4aefe80496ba463f99d12aaf05c4de51bbac5845fb5d7197bf76eaee405070442387d1fea5dbe2f8:728","weight-loss":"37:fe9a3263fc1259b0506eb6b15abb745aecd5dba276a22ec14e406507faaaaaafe00cb56700a341f1b12e05c73efbf59bb5558283ab053e80a52938a08e57ecdfa5bd9e7671af93d873bbe345488b1a82826fdac6b6425cab91cc7503826ab088b166b1df890f1bbdd561b7229755bbdeb9fb9a0288a51fe07ca0ae55b22947672aadf5c188fd006bfecc4bfab4572a3041f87312ba30411f85d280d6642eb74d5e6304a4455d8fe8b388948:684","peptide-therapy":"37:fed1067bfc1230b3506e9bb960bb758400c5dbadba53aec15bbf1507faaaaaafe01f8984008b96368fc8eba72946b8893b4d38d1f8db246af13cc9639293e28e685af6b4779aa93094746e2e87167e220169c78699da6448697f9b3a62e62ce9742a3cd1d8ca0eed17e786aebdb6359fbe3e0a778d2608e7038733cd6073d09d034d387568ff007df0bc4bfb1e952a504410d51cbae2968fe5d2910d786e9adb66810417c8656fe8ec79738:690","erectile-dysfunction":"37:fe7b7923fc111810d06eb04be6bb752485f5dbae8794aec16f141d07faaaaaafe01070f500be42d073e5e048ca7bb9ab638ec65a021e0b1827361f7fb6ef5e96824bde0bd77b17f1a5b1e60d43e6bacb9fdb6999b482858ff0851d0617708dbf6e7acf7ee02bcdbc384f6a2a92c7b2cf5962ffac6468fa4922ebc38edf4b107f3e892e553ffa80446fa463f9563aaaf05341a518babdcabfb5d6666bf5eeb16a050f04661a591fee5d3e4b8:720","hair-loss":"37:fe2ae92bfc131290906ebc8782bb7508a5f5dbad6190aec172d31d07faaaaaafe01331f500be643873e6e1bc1b3abda01b8ede033d0d0b136ecc1e7fc65f6c968abd3f3ad765151de1b3f23293e6bf06b95a4ab08efca7ce7a123c0513e9ff2f6e2c74cae02a487e90c762aab2c7b2ff142abfb6ac2e1b4821a4930ee74aa5081eaa6a24aefb80766ea463f83523aaf055bca51abaa794ffadd4f96af56ea4e50507048a3c711fe89d3e6f8:706"};
+  var P = [
+    {k:"trt", t:"Men’s Health", line:"Testosterone, ED and hair loss", img:"brochure/prog_mens.jpg",
+     lede:"Low energy or drive, erectile dysfunction, or thinning hair? A licensed physician reviews your symptoms and labs and recommends options that fit you.",
+     subs:[["trt","Testosterone"],["erectile-dysfunction","Erectile dysfunction"],["hair-loss","Hair loss"]]},
+    {k:"hrt", t:"Women’s Health", line:"Hormones, perimenopause and menopause", img:"brochure/prog_womens.jpg",
+     lede:"Hot flashes, sleep or mood changes? Get hormone options for perimenopause and menopause, reviewed by a licensed physician."},
+    {k:"weight-loss", t:"Weight Management", line:"Medical weight care, GLP-1 when indicated", img:"brochure/prog_weight.jpg",
+     lede:"Physician-supervised weight care, including GLP-1 medication when your clinician decides it fits your health profile."},
+    {k:"peptide-therapy", t:"Longevity & Peptides", line:"Evidence-based peptide protocols", img:"brochure/prog_longevity.jpg",
+     lede:"Peptide and longevity protocols chosen after a physician reviews your history, goals and labs."}
+  ];
+  var root = document.getElementById("gk");
+  var current = null, idleTimer = null, countTimer = null, IDLE_MS = 60000, COUNT_S = 15;
+
+  function track(e, p){ try{ if(window.gplx && window.gplx.track){ window.gplx.track(e, p||{}); } }catch(x){} }
+  /* QR codes are stored compactly as "size:hex-bits" and drawn as SVG here. */
+  function qrSvg(code){
+    if(!code) return "";
+    var parts = code.split(":"), n = +parts[0], hex = parts[1] || "", bits = "", d = "", b = 4, size = n + 8, i, r, c;
+    for(i = 0; i < hex.length; i++){ bits += ("000" + parseInt(hex[i], 16).toString(2)).slice(-4); }
+    /* Integrity check: if the stored code is damaged, show the web address instead of a broken QR. */
+    if(hex.length !== Math.ceil(n*n/4) || /[^0-9a-f]/.test(hex) || (bits.match(/1/g) || []).length !== +parts[2]){ return ""; }
+    for(r = 0; r < n; r++){ for(c = 0; c < n; c++){ if(bits[r*n + c] === "1"){ d += "M" + (c+b) + " " + (r+b) + "h1v1h-1z"; } } }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+size+' '+size+'" shape-rendering="crispEdges" role="img" aria-label="QR code to start your intake"><rect width="'+size+'" height="'+size+'" fill="#fff"/><path fill="#000" d="'+d+'"/></svg>';
+  }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+  var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  document.getElementById("gk-grid").innerHTML = P.map(function(p){
+    return '<button class="gk-card" data-prog="'+p.k+'"><img loading="lazy" decoding="async" src="'+IMG+p.img+'" alt=""><span class="gk-card__go">'+arrow+'</span><span class="gk-card__body"><span class="gk-card__title">'+esc(p.t)+'</span><span class="gk-card__line">'+esc(p.line)+'</span></span></button>';
+  }).join("");
+
+  function show(screen){
+    root.setAttribute("data-screen", screen);
+    if(screen !== "program"){ qr(false); }
+    if(screen === "welcome"){ current = null; }
+    armIdle();
+  }
+  function openProgram(k){
+    var p = P.filter(function(x){ return x.k === k; })[0]; if(!p) return;
+    current = p;
+    document.getElementById("gk-p-img").src = IMG + p.img;
+    document.getElementById("gk-p-eyebrow").textContent = "Your program";
+    document.getElementById("gk-p-title").textContent = p.t;
+    document.getElementById("gk-p-lede").textContent = p.lede;
+    var svg = qrSvg(QR[p.k]);
+    document.getElementById("gk-qr-code").innerHTML = svg || '<div style="height:100%;display:grid;place-items:center;text-align:center;color:#111;font:700 20px/1.3 Inter,sans-serif;padding:12px">start.gplxlife.com/' + p.k + '</div>';
+    var acts = document.getElementById("gk-actions"), old = document.getElementById("gk-subs");
+    if(old) old.remove();
+    acts.classList.toggle("has-subs", !!p.subs);
+    if(p.subs){
+      var box = document.createElement("div"); box.className = "gk-subs"; box.id = "gk-subs";
+      box.innerHTML = '<div class="gk-subs__label">Start my intake for</div><div class="gk-subs__row">' + p.subs.map(function(x){ return '<button class="gk-subbtn" data-act="sub" data-k="'+x[0]+'">'+esc(x[1])+' &rarr;</button>'; }).join("") + '</div>';
+      acts.appendChild(box);
+    }
+    qr(false);
+    show("program");
+    track("kiosk_program_view", {program:p.k});
+  }
+  function qr(on){
+    document.getElementById("gk-qr").classList.toggle("is-on", !!on);
+    document.getElementById("gk-actions").classList.toggle("is-off", !!on);
+    root.classList.toggle("is-qr", !!on);
+  }
+
+  root.addEventListener("click", function(e){
+    var el = e.target.closest("[data-go],[data-prog],[data-act]"); if(!el) return;
+    if(el.hasAttribute("data-go")){ show(el.getAttribute("data-go")); if(el.getAttribute("data-go")==="goals") track("kiosk_start",{}); return; }
+    if(el.hasAttribute("data-prog")){ openProgram(el.getAttribute("data-prog")); return; }
+    var a = el.getAttribute("data-act");
+    if(a === "qr"){ qr(true); track("kiosk_qr_shown", {program: current && current.k}); armIdle(90000); }
+    else if(a === "qr-back"){ qr(false); }
+    else if(a === "here" && current){
+      track("kiosk_start_here", {program: current.k});
+      window.location.href = BASE + "?utm_source=gym_kiosk&utm_medium=ipad&program=" + current.k;
+    }
+    else if(a === "sub"){
+      var k = el.getAttribute("data-k");
+      track("kiosk_start_here", {program: k});
+      window.location.href = BASE + "?utm_source=gym_kiosk&utm_medium=ipad&program=" + k;
+    }
+    else if(a === "stay"){ hideIdle(); armIdle(); }
+  });
+
+  /* Inactivity reset: after 60s with no touch (90s while a QR code is up) ask "Still there?", then reset. */
+  function armIdle(ms){
+    clearTimeout(idleTimer);
+    if(root.getAttribute("data-screen") === "welcome") return;
+    idleTimer = setTimeout(showIdle, ms || IDLE_MS);
+  }
+  function showIdle(){
+    var n = COUNT_S, box = document.getElementById("gk-idle"), out = document.getElementById("gk-idle-n");
+    out.textContent = n; box.classList.add("is-on");
+    clearInterval(countTimer);
+    countTimer = setInterval(function(){
+      n--; out.textContent = n;
+      if(n <= 0){ hideIdle(); show("welcome"); track("kiosk_idle_reset",{}); }
+    }, 1000);
+  }
+  function hideIdle(){ clearInterval(countTimer); document.getElementById("gk-idle").classList.remove("is-on"); }
+  ["touchstart","pointerdown","keydown"].forEach(function(ev){
+    document.addEventListener(ev, function(){
+      if(document.getElementById("gk-idle").classList.contains("is-on")) return;
+      armIdle(document.getElementById("gk-qr").classList.contains("is-on") ? 90000 : IDLE_MS);
+    }, {passive:true});
+  });
+  /* Coming back from the intake with the Back button always lands on a fresh welcome screen. */
+  window.addEventListener("pageshow", function(e){ if(e.persisted){ hideIdle(); show("welcome"); } });
+  document.addEventListener("gesturestart", function(e){ e.preventDefault(); });
+  show("welcome");
+})();
+</script>
+</div>
+
+<style>
+/* black welcome screen */
+.gk-welcome__bg,.gk-welcome__shade{display:none!important}
+.gk .gk-welcome{background:#000;justify-content:center;align-items:center;text-align:center}
+.gk .gk-welcome__body{padding:0 48px;max-width:820px;display:flex;flex-direction:column;align-items:center}
+.gk .gk-welcome__logo{height:190px;margin-bottom:40px}
+.gk .gk-welcome .gk-lede{margin-left:auto;margin-right:auto}
+@media (max-height:700px) and (orientation:landscape){.gk .gk-welcome__logo{height:130px;margin-bottom:24px}}
+/* v4: robust program buttons (fit any screen) */
+.gk h1,.gk h2,.gk h3,.gk p,.gk span,.gk button{text-transform:none!important;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif!important}
+.gk .gk-h2,.gk .gk-h1{letter-spacing:-.015em!important}
+.gk .gk-eyebrow{text-transform:uppercase!important;letter-spacing:.22em!important}
+.gk .gk-grid{grid-auto-rows:minmax(0,1fr);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.gk .gk-card img,.gk .gk-card::after{display:none!important}
+.gk .gk-card{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between;gap:16px;padding:20px 24px!important;min-height:96px;background:linear-gradient(180deg,#1c1a16,#111);border:1.5px solid rgba(212,169,78,.35)}
+.gk .gk-card:active{border-color:var(--gold);background:#1f1b13}
+.gk .gk-card__body{position:static!important;padding:0!important;flex:1 1 auto;min-width:0;order:1}
+.gk .gk-card__title{font-size:clamp(20px,3vw,30px)!important;line-height:1.15!important;overflow-wrap:break-word}
+.gk .gk-card__line{display:block!important;font-size:clamp(14px,1.9vw,18px)!important;line-height:1.35!important;color:rgba(255,255,255,.7);margin-top:6px}
+.gk .gk-card__go{position:static!important;transform:none!important;order:2;flex:none;width:48px;height:48px;background:rgba(212,169,78,.12);border-color:rgba(212,169,78,.5)}
+/* phones / narrow screens: one column, page can scroll */
+@media (max-width:700px){
+ .gk-bar{padding:16px 20px}.gk-bar img{height:44px}
+ .gk .gk-goals__head{padding:0 20px 12px}
+ .gk .gk-h2{font-size:30px!important}.gk .gk-sub{font-size:16px}
+ .gk .gk-grid{grid-template-columns:1fr!important;grid-auto-rows:auto;gap:12px;padding:6px 20px 24px}
+ .gk .gk-card{min-height:84px;padding:16px 18px!important}
+ .gk .gk-card__title{font-size:20px!important}.gk .gk-card__line{font-size:14px!important}
+ .gk .gk-card__go{width:42px;height:42px}
+ .gk .gk-h1{font-size:40px!important}.gk .gk-lede{font-size:18px}.gk .gk-welcome__logo{height:130px;margin-bottom:28px}
+ .gk .gk-btn{font-size:19px;min-height:62px;padding:0 28px}
+ .gk .gk-prog{grid-template-columns:1fr!important;grid-template-rows:auto!important;padding:0 20px 24px;overflow-y:auto;gap:18px}
+ .gk .gk-prog__photo{height:200px;flex:none}
+ .gk .gk-prog__main{overflow:visible}
+ .gk .gk-prog__lede{font-size:17px;margin:10px 0 16px}.gk .gk-steps li{font-size:16px}
+ .gk .gk-qr{flex-direction:column;text-align:center}.gk .gk-qr__code{width:220px;height:220px}
+}
+</style>
+
+<style>
+/* v5: no phone/QR option; grid on narrow screens too */
+.gk [data-act="qr"],.gk .gk-qr{display:none!important}
+.gk .gk-actions .gk-btn--ghost{background:linear-gradient(180deg,var(--gold),var(--gold-deep))!important;color:#111!important;border:0!important;box-shadow:0 10px 30px rgba(212,169,78,.25);font-size:0!important}
+.gk .gk-actions .gk-btn--ghost::after{content:"Start my intake \2192";font-size:22px;font-weight:700}
+@media (max-width:700px){.gk .gk-actions .gk-btn--ghost::after{font-size:19px}}
+@media (max-width:700px){
+ .gk .gk-grid{grid-template-columns:repeat(2,1fr)!important;grid-auto-rows:1fr!important;gap:10px!important;padding:6px 16px 20px!important}
+ .gk .gk-card{flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:0!important;padding:14px!important;min-height:0!important}
+ .gk .gk-card__go{display:none!important}
+ .gk .gk-card__body{flex:0 0 auto!important;width:100%}
+ .gk .gk-card__title{font-size:17px!important}
+ .gk .gk-card__line{font-size:12.5px!important;margin-top:5px}
+}
+</style>
+
+<style>
+/* v6: centered tiles with gold icons */
+.gk .gk-card{flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:0!important}
+.gk .gk-card__go{display:none!important}
+.gk .gk-card__body{flex:0 0 auto!important;width:100%;padding:0!important}
+.gk .gk-card::before{content:"";display:block;flex:none;width:clamp(56px,7vw,84px);height:clamp(56px,7vw,84px);margin-bottom:clamp(10px,1.4vw,18px);border-radius:50%;background-color:rgba(212,169,78,.10);border:1.5px solid rgba(212,169,78,.45);background-repeat:no-repeat;background-position:center;background-size:52%}
+.gk .gk-card:active::before{background-color:rgba(212,169,78,.22)}
+@media (max-width:700px){.gk .gk-card::before{width:52px;height:52px;margin-bottom:10px}.gk .gk-card{padding:14px 10px!important}}
+.gk .gk-card[data-prog="trt"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><circle cx='10' cy='14' r='5.5'/><path d='M14 10l6-6M15 4h5v5'/></svg>")}
+.gk .gk-card[data-prog="hrt"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='9' r='5.5'/><path d='M12 14.5V21M9 18h6'/></svg>")}
+.gk .gk-card[data-prog="weight-loss"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='3.5' width='17' height='17' rx='4'/><path d='M8 10a4 4 0 0 1 8 0'/><path d='M12 10l1.8-2.2'/></svg>")}
+.gk .gk-card[data-prog="peptide-therapy"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M7 3c0 5 10 4 10 9s-10 4-10 9'/><path d='M17 3c0 5-10 4-10 9s10 4 10 9'/><path d='M8.5 6.5h7M8.5 17.5h7'/></svg>")}
+.gk .gk-card[data-prog="erectile-dysfunction"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z'/></svg>")}
+.gk .gk-card[data-prog="hair-loss"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='5' width='17' height='4.5' rx='1.5'/><path d='M6.5 9.5V19M9.5 9.5V19M12.5 9.5V19M15.5 9.5V19M18.5 9.5V16'/></svg>")}
+</style>
+
+<style>
+/* v7: icons without circles */
+.gk .gk-card::before,.gk .gk-card:active::before{border:0!important;background-color:transparent!important;border-radius:0!important;background-size:contain!important;width:clamp(44px,5.5vw,64px)!important;height:clamp(44px,5.5vw,64px)!important}
+@media (max-width:700px){.gk .gk-card::before{width:40px!important;height:40px!important}}
+</style>
+
+<style>
+/* v8: uniform tiles: every title and description gets the same 2-line slot */
+.gk .gk-card__title{display:flex!important;align-items:center;justify-content:center;min-height:2.3em}
+.gk .gk-card__line{min-height:2.7em}
+</style>
+
+<style>
+/* v9: centered program screen (steps list centered as a block, lines left-aligned) */
+.gk .gk-prog__main{text-align:center;align-items:center}
+.gk .gk-prog__lede{max-width:640px;margin-left:auto;margin-right:auto}
+.gk .gk-steps{align-self:center;text-align:left;width:auto;max-width:100%}
+.gk .gk-price{justify-content:center;text-align:center;width:100%}
+.gk .gk-actions{width:100%}
+.gk .gk-note{max-width:640px;margin-left:auto;margin-right:auto}
+@media (max-width:700px){
+ .gk .gk-prog{display:flex!important;flex-direction:column!important}
+ .gk .gk-prog__photo{flex:0 0 230px!important;height:230px!important;min-height:230px!important}
+ .gk .gk-prog__photo img{object-position:50% 22%!important}
+ .gk .gk-prog__main{flex:none!important}
+}
+</style>
+
+<style>
+/* v10 (George's changes): bigger logo, 4 programs in a 2x2 grid, Men's Health sub-intakes */
+.gk .gk-welcome__logo{height:min(300px,32vh)!important;margin-bottom:34px!important}
+@media (max-width:700px){.gk .gk-welcome__logo{height:170px!important;margin-bottom:22px!important}}
+.gk .gk-grid{grid-template-columns:repeat(2,1fr)!important;grid-auto-rows:1fr!important}
+.gk .gk-welcome .gk-h1{text-wrap:balance}
+.gk .gk-subs{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.gk .gk-subs__label{font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.gk .gk-subs__row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%}
+.gk .gk-subbtn{appearance:none;border:0;cursor:pointer;font:700 clamp(17px,2vw,21px)/1.1 Inter,sans-serif;color:#111;background:linear-gradient(180deg,var(--gold),var(--gold-deep));border-radius:999px;padding:18px 26px;min-width:200px;text-transform:none;letter-spacing:normal}
+.gk .gk-subbtn:active{transform:scale(.97)}
+.gk .gk-actions.has-subs .gk-btn{display:none!important}
+@media (max-width:700px){.gk .gk-subbtn{min-width:0;flex:1 1 100%;padding:15px 18px}}
+</style>
+</body></html>
