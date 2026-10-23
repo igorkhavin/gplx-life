@@ -1,5 +1,5 @@
 name: Scrape live gplxlife.com
-# rerun: verify kiosk 1.5.0
+# rerun: verify kiosk 1.6.0 sync
 on:
   push:
     paths:
@@ -22,7 +22,13 @@ jobs:
                --reject-regex '(wp-json|wp-admin|wp-login|xmlrpc|feed|\?|/cart|/checkout|/my-account)' \
                --accept html,htm --default-page=index.html --adjust-extension --max-redirect=0 \
                https://gplxlife.com/ || true
+          # first hit lets WP-Cron run any pending kiosk sync, then read the page again
+          curl -sL -A "$UA" "https://gplxlife.com/kiosk/?nocache=$(date +%s)" -o /dev/null
+          sleep 90
+          curl -sL -A "$UA" "https://gplxlife.com/wp-cron.php?doing_wp_cron" -o /dev/null || true
+          sleep 30
           curl -sL -A "$UA" "https://gplxlife.com/kiosk/?nocache=$(date +%s)" -o kiosk-live.html
+          grep -o "gplx-kiosk-sync: [^>]*" kiosk-live.html || true
           curl -sL -A "$UA" "https://gplxlife.com/?nocache=$(date +%s)" -o home-live.html
           curl -sL -A "$UA" https://gplxlife.com/wp-sitemap.xml -o wp-sitemap.xml || true
           find . -type f | sort > files.txt
