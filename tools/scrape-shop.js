@@ -38,7 +38,11 @@ fs.mkdirSync(OUT + '/pages', { recursive: true });
   for (const s of slugs) {
     const c = await all(`&collectionSlug=${s}`);
     collections[s] = { total: c.total, ids: c.products.map((p) => p._id) };
+    // Paging the full catalog by name can skip one of several same-name products; collections fill the gap.
+    for (const p of c.products) if (!catalog.products.some((q) => q._id === p._id)) catalog.products.push(p);
   }
+  const seenIds = new Set();
+  catalog.products = catalog.products.filter((p) => !seenIds.has(p._id) && seenIds.add(p._id));
   for (const p of catalog.products) {
     delete p.description;
     try {
