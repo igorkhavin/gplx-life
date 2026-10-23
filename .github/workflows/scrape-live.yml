@@ -1,5 +1,5 @@
 name: Scrape live gplxlife.com
-# rerun: verify no Karpa links
+# rerun: verify kiosk 1.2.0 tiles
 on:
   push:
     paths:
