@@ -1,5 +1,5 @@
 name: Scrape live gplxlife.com
-# rerun: verify kiosk 1.1.0
+# rerun: verify no Karpa links
 on:
   push:
     paths:
@@ -23,6 +23,7 @@ jobs:
                --accept html,htm --default-page=index.html --adjust-extension --max-redirect=0 \
                https://gplxlife.com/ || true
           curl -sL -A "$UA" "https://gplxlife.com/kiosk/?nocache=$(date +%s)" -o kiosk-live.html
+          curl -sL -A "$UA" "https://gplxlife.com/?nocache=$(date +%s)" -o home-live.html
           curl -sL -A "$UA" https://gplxlife.com/wp-sitemap.xml -o wp-sitemap.xml || true
           find . -type f | sort > files.txt
           cat files.txt
