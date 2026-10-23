@@ -1,0 +1,42 @@
+name: Scrape live gplxlife.com
+on:
+  push:
+    paths:
+      - .github/workflows/scrape-live.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror pages
+        run: |
+          set -u
+          rm -rf live-snapshot && mkdir -p live-snapshot
+          cd live-snapshot
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+          wget -q -e robots=off -U "$UA" --recursive --level=3 --no-parent --domains=gplxlife.com \
+               --reject-regex '(wp-json|wp-admin|wp-login|xmlrpc|feed|\?|/cart|/checkout|/my-account)' \
+               --accept html,htm --default-page=index.html --adjust-extension --max-redirect=0 \
+               https://gplxlife.com/ || true
+          curl -sL -A "$UA" "https://gplxlife.com/kiosk/?nocache=$(date +%s)" -o kiosk-live.html
+          curl -sL -A "$UA" https://gplxlife.com/wp-sitemap.xml -o wp-sitemap.xml || true
+          find . -type f | sort > files.txt
+          cat files.txt
+      - name: Screenshot kiosk
+        run: |
+          cd live-snapshot
+          for s in "1180,820:kiosk-ipad-landscape" "820,1180:kiosk-ipad-portrait" "390,844:kiosk-phone"; do
+            google-chrome --headless=new --no-sandbox --hide-scrollbars --virtual-time-budget=8000 \
+              --window-size="${s%%:*}" --screenshot="${s##*:}.png" "https://gplxlife.com/kiosk/?nocache=$(date +%s)" || true
+          done
+          ls -la *.png || true
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add live-snapshot
+          git commit -m "Snapshot of live gplxlife.com" || echo "nothing to commit"
+          git push
