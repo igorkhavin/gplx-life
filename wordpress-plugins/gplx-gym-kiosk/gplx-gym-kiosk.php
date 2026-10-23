@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GPLX Gym Kiosk
  * Description: Shows the gym kiosk (welcome screen, program tiles, products with QR codes, "Start here" shop frame) on gplxlife.com/kiosk/. The kiosk code lives in this plugin, not in the page content, so page saves can no longer strip its styles and scripts. Deactivate to go back to the page's own content.
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author: GPLX
  */
 
