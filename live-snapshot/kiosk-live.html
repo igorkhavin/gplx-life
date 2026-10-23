@@ -4328,6 +4328,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 <main id="wp--skip-link--target" class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
   <div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow"><div id="gk" class="gk" data-screen="welcome">
 <style>
+
 .gplx-sticky-cta,.gplx-exit-modal,#wpadminbar{display:none!important}
 html,body{background:#000!important;overflow:hidden!important;overscroll-behavior:none}
 .gk{--gold:#D4A94E;--gold-deep:#B08A3E;--gold-soft:#E8D9B0;--ink:#0F0F0F;--ink2:#1A1A1A;--line:rgba(232,217,176,.18);--muted:rgba(255,255,255,.72);
@@ -4430,203 +4431,8 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
  .gk-card__title{font-size:21px}.gk-card__line{display:none}.gk-qr__code{width:200px;height:200px}
  .gk-steps li{font-size:17px}.gk-prog__lede{font-size:18px;margin:10px 0 16px}
 }
-</style>
 
-<!-- 1. WELCOME -->
-<section class="gk-screen gk-welcome" aria-label="Welcome">
-  <img loading="lazy" decoding="async" class="gk-welcome__bg" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/brochure/prog_mens.jpg" alt="">
-  <div class="gk-welcome__shade"></div>
-  <div class="gk-welcome__body">
-    <img loading="lazy" decoding="async" class="gk-welcome__logo" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
-    <p class="gk-eyebrow">Physician-led care</p>
-    <h1 class="gk-h1">The beginning of a new you.</h1>
-    <p class="gk-lede">Hormones, weight, longevity and more, with a licensed physician reviewing every step. Pick your goal and get started in minutes.</p>
-    <button class="gk-btn gk-btn--gold gk-pulse" data-go="goals">Tap to get started
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </button>
-    <p class="gk-fine">$39.99/mo membership · $30 per doctor consult · charged only after physician approval</p>
-  </div>
-</section>
 
-<!-- 2. GOALS -->
-<section class="gk-screen gk-goals" aria-label="Choose your goal">
-  <div class="gk-bar">
-    <img loading="lazy" decoding="async" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
-    <button class="gk-link" data-go="welcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>Start over</button>
-  </div>
-  <div class="gk-goals__head">
-    <h2 class="gk-h2">What brings you in today?</h2>
-    <p class="gk-sub">Tap the goal that fits you best. You can change it later.</p>
-  </div>
-  <div class="gk-grid" id="gk-grid"></div>
-</section>
-
-<!-- 3. PROGRAM -->
-<section class="gk-screen gk-program" aria-label="Program details">
-  <div class="gk-bar">
-    <button class="gk-link" data-go="goals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>All programs</button>
-    <button class="gk-link" data-go="welcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>Start over</button>
-  </div>
-  <div class="gk-prog">
-    <div class="gk-prog__photo"><img loading="lazy" decoding="async" id="gk-p-img" src="" alt=""></div>
-    <div class="gk-prog__main">
-      <p class="gk-eyebrow" id="gk-p-eyebrow">Program</p>
-      <h2 class="gk-h2" id="gk-p-title"></h2>
-      <p class="gk-prog__lede" id="gk-p-lede"></p>
-      <ol class="gk-steps">
-        <li><b>1</b>Complete a short, secure online intake</li>
-        <li><b>2</b>A licensed clinician reviews your answers</li>
-        <li><b>3</b>Treatment only if it&rsquo;s right for you</li>
-      </ol>
-      <div class="gk-price"><span>$39.99/mo membership</span><span>$30 per doctor consult</span><span>Charged only after physician approval</span></div>
-      <div class="gk-actions" id="gk-actions">
-        <button class="gk-btn gk-btn--gold" data-act="qr">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-          Continue on my phone</button>
-        <button class="gk-btn gk-btn--ghost" data-act="here">Start here on this iPad</button>
-      </div>
-      <div class="gk-qr" id="gk-qr">
-        <div class="gk-qr__code" id="gk-qr-code"></div>
-        <div class="gk-qr__text">
-          <h3>Scan with your phone camera</h3>
-          <p>Open your camera, point it at the code, and tap the link. Your answers stay private on your own phone, and you can finish anytime.</p>
-          <button class="gk-link" data-act="qr-back">Back</button>
-        </div>
-      </div>
-      <p class="gk-note">Not for emergencies. Prescriptions are only provided when a licensed medical provider determines they&rsquo;re appropriate. Individual results vary.</p>
-    </div>
-  </div>
-</section>
-
-<!-- idle check -->
-<div class="gk-idle" id="gk-idle" role="dialog" aria-modal="true" aria-labelledby="gk-idle-t">
-  <div class="gk-idle__panel">
-    <h3 id="gk-idle-t">Still there?</h3>
-    <p>This screen resets in <span class="gk-idle__count" id="gk-idle-n">15</span> seconds.</p>
-    <button class="gk-btn gk-btn--gold" data-act="stay">I&rsquo;m still here</button>
-  </div>
-</div>
-
-<script>
-(function(){
-  var IMG = "https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/";
-  var BASE = "https://start.gplxlife.com/";
-  var QR = {"trt":"37:fe5164b3fc10f38c906e949660bb743ec675dba24857aec1610d6d07faaaaaafe0087d400096f0e9ed02cebd8c7976dbd4f296babd7ffe05a9d47df7a2b15f719f09102e2eaca4b3ddd00a5e99976187589075fe8e1f29d7a87bf80867b669dfa9345d6523a4f9e2d91878b1841b83022cb04758e6e9369aedf3e249f2d93deab10d751569fa804677d467f8532a6b705951951cba24434fc5d7faf5cfae96a3197704d649ba0fea455da18:708","hrt":"37:fe36ea8bfc112490d06eb0e7a6bb75c325f5dbad8990aec166911d07faaaaaafe01c513100be112ef3e4e65e0241b9bb13eee7f9650e391aef2c9e79ee752eb683b8b7325f74363de5337b9985e6a2c909576992affca7efa0423f141ff155ae6e7e9a5cc02978bea8df62904307f23bdf3e7fbc850e0aeb2aff130eef43cd093f3b25c4aefe80496ba463f99d12aaf05c4de51bbac5845fb5d7197bf76eaee405070442387d1fea5dbe2f8:728","weight-loss":"37:fe9a3263fc1259b0506eb6b15abb745aecd5dba276a22ec14e406507faaaaaafe00cb56700a341f1b12e05c73efbf59bb5558283ab053e80a52938a08e57ecdfa5bd9e7671af93d873bbe345488b1a82826fdac6b6425cab91cc7503826ab088b166b1df890f1bbdd561b7229755bbdeb9fb9a0288a51fe07ca0ae55b22947672aadf5c188fd006bfecc4bfab4572a3041f87312ba30411f85d280d6642eb74d5e6304a4455d8fe8b388948:684","peptide-therapy":"37:fed1067bfc1230b3506e9bb960bb758400c5dbadba53aec15bbf1507faaaaaafe01f8984008b96368fc8eba72946b8893b4d38d1f8db246af13cc9639293e28e685af6b4779aa93094746e2e87167e220169c78699da6448697f9b3a62e62ce9742a3cd1d8ca0eed17e786aebdb6359fbe3e0a778d2608e7038733cd6073d09d034d387568ff007df0bc4bfb1e952a504410d51cbae2968fe5d2910d786e9adb66810417c8656fe8ec79738:690","erectile-dysfunction":"37:fe7b7923fc111810d06eb04be6bb752485f5dbae8794aec16f141d07faaaaaafe01070f500be42d073e5e048ca7bb9ab638ec65a021e0b1827361f7fb6ef5e96824bde0bd77b17f1a5b1e60d43e6bacb9fdb6999b482858ff0851d0617708dbf6e7acf7ee02bcdbc384f6a2a92c7b2cf5962ffac6468fa4922ebc38edf4b107f3e892e553ffa80446fa463f9563aaaf05341a518babdcabfb5d6666bf5eeb16a050f04661a591fee5d3e4b8:720","hair-loss":"37:fe2ae92bfc131290906ebc8782bb7508a5f5dbad6190aec172d31d07faaaaaafe01331f500be643873e6e1bc1b3abda01b8ede033d0d0b136ecc1e7fc65f6c968abd3f3ad765151de1b3f23293e6bf06b95a4ab08efca7ce7a123c0513e9ff2f6e2c74cae02a487e90c762aab2c7b2ff142abfb6ac2e1b4821a4930ee74aa5081eaa6a24aefb80766ea463f83523aaf055bca51abaa794ffadd4f96af56ea4e50507048a3c711fe89d3e6f8:706"};
-  var P = [
-    {k:"trt", t:"Men’s Health", line:"Testosterone, ED and hair loss", img:"brochure/prog_mens.jpg",
-     lede:"Low energy or drive, erectile dysfunction, or thinning hair? A licensed physician reviews your symptoms and labs and recommends options that fit you.",
-     subs:[["trt","Testosterone"],["erectile-dysfunction","Erectile dysfunction"],["hair-loss","Hair loss"]]},
-    {k:"hrt", t:"Women’s Health", line:"Hormones, perimenopause and menopause", img:"brochure/prog_womens.jpg",
-     lede:"Hot flashes, sleep or mood changes? Get hormone options for perimenopause and menopause, reviewed by a licensed physician."},
-    {k:"weight-loss", t:"Weight Management", line:"Medical weight care, GLP-1 when indicated", img:"brochure/prog_weight.jpg",
-     lede:"Physician-supervised weight care, including GLP-1 medication when your clinician decides it fits your health profile."},
-    {k:"peptide-therapy", t:"Longevity & Peptides", line:"Evidence-based peptide protocols", img:"brochure/prog_longevity.jpg",
-     lede:"Peptide and longevity protocols chosen after a physician reviews your history, goals and labs."}
-  ];
-  var root = document.getElementById("gk");
-  var current = null, idleTimer = null, countTimer = null, IDLE_MS = 60000, COUNT_S = 15;
-
-  function track(e, p){ try{ if(window.gplx && window.gplx.track){ window.gplx.track(e, p||{}); } }catch(x){} }
-  /* QR codes are stored compactly as "size:hex-bits" and drawn as SVG here. */
-  function qrSvg(code){
-    if(!code) return "";
-    var parts = code.split(":"), n = +parts[0], hex = parts[1] || "", bits = "", d = "", b = 4, size = n + 8, i, r, c;
-    for(i = 0; i < hex.length; i++){ bits += ("000" + parseInt(hex[i], 16).toString(2)).slice(-4); }
-    /* Integrity check: if the stored code is damaged, show the web address instead of a broken QR. */
-    if(hex.length !== Math.ceil(n*n/4) || /[^0-9a-f]/.test(hex) || (bits.match(/1/g) || []).length !== +parts[2]){ return ""; }
-    for(r = 0; r < n; r++){ for(c = 0; c < n; c++){ if(bits[r*n + c] === "1"){ d += "M" + (c+b) + " " + (r+b) + "h1v1h-1z"; } } }
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+size+' '+size+'" shape-rendering="crispEdges" role="img" aria-label="QR code to start your intake"><rect width="'+size+'" height="'+size+'" fill="#fff"/><path fill="#000" d="'+d+'"/></svg>';
-  }
-  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
-
-  var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-  document.getElementById("gk-grid").innerHTML = P.map(function(p){
-    return '<button class="gk-card" data-prog="'+p.k+'"><img loading="lazy" decoding="async" src="'+IMG+p.img+'" alt=""><span class="gk-card__go">'+arrow+'</span><span class="gk-card__body"><span class="gk-card__title">'+esc(p.t)+'</span><span class="gk-card__line">'+esc(p.line)+'</span></span></button>';
-  }).join("");
-
-  function show(screen){
-    root.setAttribute("data-screen", screen);
-    if(screen !== "program"){ qr(false); }
-    if(screen === "welcome"){ current = null; }
-    armIdle();
-  }
-  function openProgram(k){
-    var p = P.filter(function(x){ return x.k === k; })[0]; if(!p) return;
-    current = p;
-    document.getElementById("gk-p-img").src = IMG + p.img;
-    document.getElementById("gk-p-eyebrow").textContent = "Your program";
-    document.getElementById("gk-p-title").textContent = p.t;
-    document.getElementById("gk-p-lede").textContent = p.lede;
-    var svg = qrSvg(QR[p.k]);
-    document.getElementById("gk-qr-code").innerHTML = svg || '<div style="height:100%;display:grid;place-items:center;text-align:center;color:#111;font:700 20px/1.3 Inter,sans-serif;padding:12px">start.gplxlife.com/' + p.k + '</div>';
-    var acts = document.getElementById("gk-actions"), old = document.getElementById("gk-subs");
-    if(old) old.remove();
-    acts.classList.toggle("has-subs", !!p.subs);
-    if(p.subs){
-      var box = document.createElement("div"); box.className = "gk-subs"; box.id = "gk-subs";
-      box.innerHTML = '<div class="gk-subs__label">Start my intake for</div><div class="gk-subs__row">' + p.subs.map(function(x){ return '<button class="gk-subbtn" data-act="sub" data-k="'+x[0]+'">'+esc(x[1])+' &rarr;</button>'; }).join("") + '</div>';
-      acts.appendChild(box);
-    }
-    qr(false);
-    show("program");
-    track("kiosk_program_view", {program:p.k});
-  }
-  function qr(on){
-    document.getElementById("gk-qr").classList.toggle("is-on", !!on);
-    document.getElementById("gk-actions").classList.toggle("is-off", !!on);
-    root.classList.toggle("is-qr", !!on);
-  }
-
-  root.addEventListener("click", function(e){
-    var el = e.target.closest("[data-go],[data-prog],[data-act]"); if(!el) return;
-    if(el.hasAttribute("data-go")){ show(el.getAttribute("data-go")); if(el.getAttribute("data-go")==="goals") track("kiosk_start",{}); return; }
-    if(el.hasAttribute("data-prog")){ openProgram(el.getAttribute("data-prog")); return; }
-    var a = el.getAttribute("data-act");
-    if(a === "qr"){ qr(true); track("kiosk_qr_shown", {program: current && current.k}); armIdle(90000); }
-    else if(a === "qr-back"){ qr(false); }
-    else if(a === "here" && current){
-      track("kiosk_start_here", {program: current.k});
-      window.location.href = BASE + current.k + "?utm_source=gym_kiosk&utm_medium=ipad";
-    }
-    else if(a === "sub"){
-      var k = el.getAttribute("data-k");
-      track("kiosk_start_here", {program: k});
-      window.location.href = BASE + k + "?utm_source=gym_kiosk&utm_medium=ipad";
-    }
-    else if(a === "stay"){ hideIdle(); armIdle(); }
-  });
-
-  /* Inactivity reset: after 60s with no touch (90s while a QR code is up) ask "Still there?", then reset. */
-  function armIdle(ms){
-    clearTimeout(idleTimer);
-    if(root.getAttribute("data-screen") === "welcome") return;
-    idleTimer = setTimeout(showIdle, ms || IDLE_MS);
-  }
-  function showIdle(){
-    var n = COUNT_S, box = document.getElementById("gk-idle"), out = document.getElementById("gk-idle-n");
-    out.textContent = n; box.classList.add("is-on");
-    clearInterval(countTimer);
-    countTimer = setInterval(function(){
-      n--; out.textContent = n;
-      if(n <= 0){ hideIdle(); show("welcome"); track("kiosk_idle_reset",{}); }
-    }, 1000);
-  }
-  function hideIdle(){ clearInterval(countTimer); document.getElementById("gk-idle").classList.remove("is-on"); }
-  ["touchstart","pointerdown","keydown"].forEach(function(ev){
-    document.addEventListener(ev, function(){
-      if(document.getElementById("gk-idle").classList.contains("is-on")) return;
-      armIdle(document.getElementById("gk-qr").classList.contains("is-on") ? 90000 : IDLE_MS);
-    }, {passive:true});
-  });
-  /* Coming back from the intake with the Back button always lands on a fresh welcome screen. */
-  window.addEventListener("pageshow", function(e){ if(e.persisted){ hideIdle(); show("welcome"); } });
-  document.addEventListener("gesturestart", function(e){ e.preventDefault(); });
-  show("welcome");
-})();
-</script>
-</div>
-
-<style>
 /* black welcome screen */
 .gk-welcome__bg,.gk-welcome__shade{display:none!important}
 .gk .gk-welcome{background:#000;justify-content:center;align-items:center;text-align:center}
@@ -4663,9 +4469,8 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
  .gk .gk-prog__lede{font-size:17px;margin:10px 0 16px}.gk .gk-steps li{font-size:16px}
  .gk .gk-qr{flex-direction:column;text-align:center}.gk .gk-qr__code{width:220px;height:220px}
 }
-</style>
 
-<style>
+
 /* v5: no phone/QR option; grid on narrow screens too */
 .gk [data-act="qr"],.gk .gk-qr{display:none!important}
 .gk .gk-actions .gk-btn--ghost{background:linear-gradient(180deg,var(--gold),var(--gold-deep))!important;color:#111!important;border:0!important;box-shadow:0 10px 30px rgba(212,169,78,.25);font-size:0!important}
@@ -4679,9 +4484,8 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
  .gk .gk-card__title{font-size:17px!important}
  .gk .gk-card__line{font-size:12.5px!important;margin-top:5px}
 }
-</style>
 
-<style>
+
 /* v6: centered tiles with gold icons */
 .gk .gk-card{flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:0!important}
 .gk .gk-card__go{display:none!important}
@@ -4695,21 +4499,18 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
 .gk .gk-card[data-prog="peptide-therapy"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M7 3c0 5 10 4 10 9s-10 4-10 9'/><path d='M17 3c0 5-10 4-10 9s10 4 10 9'/><path d='M8.5 6.5h7M8.5 17.5h7'/></svg>")}
 .gk .gk-card[data-prog="erectile-dysfunction"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z'/></svg>")}
 .gk .gk-card[data-prog="hair-loss"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><rect x='3.5' y='5' width='17' height='4.5' rx='1.5'/><path d='M6.5 9.5V19M9.5 9.5V19M12.5 9.5V19M15.5 9.5V19M18.5 9.5V16'/></svg>")}
-</style>
 
-<style>
+
 /* v7: icons without circles */
 .gk .gk-card::before,.gk .gk-card:active::before{border:0!important;background-color:transparent!important;border-radius:0!important;background-size:contain!important;width:clamp(44px,5.5vw,64px)!important;height:clamp(44px,5.5vw,64px)!important}
 @media (max-width:700px){.gk .gk-card::before{width:40px!important;height:40px!important}}
-</style>
 
-<style>
+
 /* v8: uniform tiles: every title and description gets the same 2-line slot */
 .gk .gk-card__title{display:flex!important;align-items:center;justify-content:center;min-height:2.3em}
 .gk .gk-card__line{min-height:2.7em}
-</style>
 
-<style>
+
 /* v9: centered program screen (steps list centered as a block, lines left-aligned) */
 .gk .gk-prog__main{text-align:center;align-items:center}
 .gk .gk-prog__lede{max-width:640px;margin-left:auto;margin-right:auto}
@@ -4723,9 +4524,8 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
  .gk .gk-prog__photo img{object-position:50% 22%!important}
  .gk .gk-prog__main{flex:none!important}
 }
-</style>
 
-<style>
+
 /* v10 (George's changes): bigger logo, 4 programs in a 2x2 grid, Men's Health sub-intakes */
 .gk .gk-welcome__logo{height:min(300px,32vh)!important;margin-bottom:34px!important}
 @media (max-width:700px){.gk .gk-welcome__logo{height:170px!important;margin-bottom:22px!important}}
@@ -4738,19 +4538,12 @@ position:fixed;inset:0;z-index:99999;background:#000;color:#fff;font-family:"Int
 .gk .gk-subbtn:active{transform:scale(.97)}
 .gk .gk-actions.has-subs .gk-btn{display:none!important}
 @media (max-width:700px){.gk .gk-subbtn{min-width:0;flex:1 1 100%;padding:15px 18px}}
-</style>
 
-<style>
+
 /* v11: Karpa pricing retired (Outfit MD prices are per product on shop.gplxlife.com) */
 .gk .gk-fine,.gk .gk-price{display:none!important}
-</style>
 
-<script>
-/* Kiosk product data (QA'd against shop.gplxlife.com product pages, Oct 22 2026 12:30; NAD+ $179 card removed per Igor). Engine is the next block. */
-window.GPLX_KIOSK_DATA = {"trt":{"t":"TRT & HRT","line":"Hormone therapy for men and women","items":[{"t":"Signature TRT Membership","d":"Male testosterone replacement therapy","p":"$199/mo","c":false,"v":[{"l":"Membership","id":"6ac8dbb3ccdbec6c47d16ac2"}]},{"t":"Signature HRT Membership","d":"Female hormone replacement therapy","p":"$250.00","c":false,"v":[{"l":"Membership","id":"6ac8db79e2e4ec46aebd7bf7"}]},{"t":"TRT Initial Package","d":"Starter package for testosterone therapy","p":"$228.00","c":true,"v":[{"l":"Order","id":"6acd3053945f28f3f5b0a509"}]},{"t":"Testosterone Cypionate","d":"200 mg/mL · 10 mL vial","p":"$149.00","c":true,"v":[{"l":"Order","id":"6ac8db7515dafb910f5d237b"}]},{"t":"Enclomiphene","d":"12.5 or 50 mg capsules · 30 count","p":"$135.45","c":true,"v":[{"l":"Order","id":"6ac8db7840b7b9e4080c6974"}]},{"t":"Clomiphene","d":"25 or 50 mg capsules · 30 count","p":"$69.00","c":true,"v":[{"l":"Order","id":"6ac8db6cd444536f78fdf038"}]},{"t":"Anastrozole","d":"0.5 or 1 mg capsules · 30 count","p":"$45.00","c":true,"v":[{"l":"Order","id":"6ac8db6f3418badd9425332a"}]},{"t":"Estradiol","d":"2, 4 or 6 mg capsules · 30 count","p":"$70.00","c":true,"v":[{"l":"Order","id":"6ac8db77d444536f78fdf10f"}]},{"t":"Biest / Progesterone / Testosterone Cream","d":"30 or 60 gm","p":"$111.30","c":true,"v":[{"l":"Order","id":"6ac8db50e2e4ec46aebd7765"}]},{"t":"Biest / Testosterone Cream","d":"Biest 0.25 / Testosterone 2.5 mg/gm","p":"$75.00","c":true,"v":[{"l":"Order","id":"6ac8db51e773148217211f82"}]},{"t":"Testosterone Vaginal Cream","d":"90 gm","p":"$111.30","c":true,"v":[{"l":"Order","id":"6ac8db550d600f34df7bd9a5"}]},{"t":"Armour Thyroid","d":"15 or 180 mg tablets · 30 count","p":"$108.00","c":true,"v":[{"l":"Order","id":"6ac8db6d15dafb910f5d22c1"}]},{"t":"NP Thyroid","d":"30 or 60 mg tablets · 30 count","p":"$81.90","c":true,"v":[{"l":"Order","id":"6ac8db6a15dafb910f5d226d"}]},{"t":"Oxandrolone","d":"12.5, 25 or 50 mg troches · 30 count","p":"$207.90","c":true,"v":[{"l":"Order","id":"6ac8db69d5f171cdc0dd294d"}]}]},"weight-loss":{"t":"Weight Loss","line":"GLP-1 care with physician oversight","items":[{"t":"Tirzepatide + B12","d":"10, 20, 30 or 60 mg","p":"$132.30","c":true,"v":[{"l":"One-time","id":"6ac8db6340b7b9e4080c67a2"},{"l":"Monthly","id":"6ac8db650d600f34df7bdadb","p":"$132.30/mo"}]},{"t":"Tirzepatide + B3","d":"20, 30 or 60 mg","p":"$151.20","c":true,"v":[{"l":"One-time","id":"6ac8db52993899cd948f8d94"},{"l":"Monthly","id":"6ac8db5415dafb910f5d2081","p":"$150.00/mo"}]},{"t":"Semaglutide + B12","d":"2 to 10 mg options","p":"$346.50","c":true,"v":[{"l":"One-time","id":"6ac8dbb08f84763a60325c49"},{"l":"Monthly","id":"6ac8dbae0d600f34df7be1d3","p":"$75.60/mo"}]},{"t":"Tirzepatide 15 mg","d":"3 mL vial","p":"$499.00","c":false,"v":[{"l":"Order","id":"6ac8db83a8539a18f01ac27d"}]},{"t":"Tirzepatide 30 mg","d":"3 mL vial","p":"$210.00","c":true,"v":[{"l":"Order","id":"6ac8db8489834a8d23c603bf"}]},{"t":"Tirzepatide 60 mg","d":"3 mL vial","p":"$388.50","c":true,"v":[{"l":"Order","id":"6ac8db854dcf76d656d3e462"}]}]},"peptide-therapy":{"t":"Health & Vitality","line":"NAD+, peptides and wellness","items":[{"t":"NAD+ 500 mg","d":"10 mL vial","p":"$180.00","c":false,"v":[{"l":"Order","id":"6ac8db9f3418badd942537e3"}]},{"t":"NAD+ 1000 mg","d":"10 mL vial","p":"$189.00","c":false,"v":[{"l":"Order","id":"6ac8dba4ad26af42eacd4cae"}]},{"t":"Glutathione","d":"","p":"$124.00","c":true,"v":[{"l":"Order","id":"6ac8dbabe7731482172127bd"}]},{"t":"Tesamorelin 20 mg","d":"5 mL · liquid","p":"$142.80","c":true,"v":[{"l":"Order","id":"6ac8db600d600f34df7bda6a"}]},{"t":"Tesamorelin 10 mg","d":"3 mL vial","p":"$140.00","c":false,"v":[{"l":"Order","id":"6ac8db70864cb9553f74cbde"}]},{"t":"PT-141 30 mg","d":"5 mL · liquid","p":"$123.90","c":true,"v":[{"l":"Order","id":"6ac8db5f8f84763a60325301"}]},{"t":"BPC-157 5 mg","d":"3 mL vial","p":"$109.20","c":false,"v":[{"l":"Order","id":"6ac8db81ad26af42eacd48c3"}]},{"t":"BPC-157 10 mg","d":"3 mL vial","p":"$151.20","c":false,"v":[{"l":"Order","id":"6ac8dba2864cb9553f74d174"}]},{"t":"BPC-157 15 mg","d":"5 mL · liquid","p":"$123.90","c":true,"v":[{"l":"Order","id":"6ac8db56993899cd948f8e12"}]},{"t":"CJC-1295 with DAC","d":"5 mg · 3 mL vial","p":"$100.80","c":false,"v":[{"l":"Order","id":"6ac8db92e773148217212520"}]},{"t":"CJC-1295 without DAC","d":"5 mg · 3 mL vial","p":"$100.80","c":false,"v":[{"l":"Order","id":"6ac8db91757ce99081234d13"}]},{"t":"CJC-1295 / Ipamorelin","d":"5 / 5 mg · 3 mL vial","p":"$129.00/mo","c":false,"v":[{"l":"Order","id":"6ac8db98ccdbec6c47d1687e"}]},{"t":"CJC-1295 / Ipamorelin","d":"6 / 12 mg · 5 mL · liquid","p":"$145.00","c":true,"v":[{"l":"Order","id":"6ac8db573418badd9425310c"}]},{"t":"GHK-Cu 50 mg","d":"3 mL vial","p":"$92.00","c":false,"v":[{"l":"Order","id":"6ac8db95aa711274ec092974"}]},{"t":"GHK-Cu 50 mg","d":"5 mL · liquid","p":"$115.00","c":true,"v":[{"l":"Order","id":"6ac8db5aaa711274ec0923c0"}]},{"t":"GLOW","d":"BPC-157 / GHK-Cu / TB-500 · 3 mL","p":"$277.20","c":false,"v":[{"l":"Order","id":"6ac8db94ccdbec6c47d1678e"}]},{"t":"KLOW","d":"BPC-157 / GHK-Cu / KPV / TB-500 · 5 mL liquid","p":"$201.60","c":true,"v":[{"l":"Order","id":"6ac8db5d3418badd9425318d"}]},{"t":"KLOW","d":"BPC-157 / GHK-Cu / TB-500 / KPV · 3 mL","p":"$257.00/mo","c":false,"v":[{"l":"Order","id":"6ac8db93993899cd948f9291"}]}]},"medical":{"t":"Medical Services","line":"Doctor consults, labs and supplies","items":[{"t":"Online Doctor Consult","d":"Reviewed by a licensed physician","p":"$72.00","c":false,"v":[{"l":"Book","id":"6ac8db4ead26af42eacd4541"}]},{"t":"Live Video Consult","d":"Talk with a physician live","p":"$79.80","c":false,"v":[{"l":"Book","id":"6ac8dba8757ce99081234f50"}]},{"t":"Rythm Labs Home Kit","d":"At-home lab kit","p":"$99.00","c":false,"v":[{"l":"Order","id":"6ac8db66757ce9908123497a"}]},{"t":"Starter Kit","d":"10 syringes, 10 swabs, bacteriostatic water","p":"$31.40","c":false,"v":[{"l":"Order","id":"6ac8dbb5757ce99081235063"}]},{"t":"Starter Kit (no water)","d":"10 syringes, 10 swabs","p":"$28.00","c":false,"v":[{"l":"Order","id":"6ac8db7fccdbec6c47d164cc"}]},{"t":"Bacteriostatic Water","d":"One 10 mL vial","p":"$20.90","c":false,"v":[{"l":"Order","id":"6ac8dbb8864cb9553f74d2f1"}]},{"t":"Syringes","d":"Box of 100","p":"$62.90","c":false,"v":[{"l":"Order","id":"6ac8dbb7a8539a18f01ac811"}]},{"t":"Alcohol Swabs","d":"100 count","p":"$31.40","c":false,"v":[{"l":"Order","id":"6ac8dbb640b7b9e4080c6ffb"}]}]}};
-</script>
 
-<style>
 /* v18 engine (product data lives in the block above): kiosk-native product screens (tiles -> category -> product -> QR or start here); shop frame only for "Start here" */
 .gk .gk-card[data-cat="medical"]::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4A94E' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='4'/><path d='M12 8v8M8 12h8'/></svg>")}
 .gk[data-screen="shop"] .gk-shop,.gk[data-screen="cat"] .gk-cat,.gk[data-screen="prod"] .gk-prod2{opacity:1;visibility:visible;transition:opacity .35s ease}
@@ -4803,7 +4596,53 @@ window.GPLX_KIOSK_DATA = {"trt":{"t":"TRT & HRT","line":"Hormone therapy for men
  .gk .gk-p2__qr{width:min(260px,78%);padding:14px}
  .gk .gk-p2__t{font-size:30px}.gk .gk-p2__p{font-size:30px}.gk .gk-p2__d{font-size:16px}
 }
+
+
+/* v19: start-screen discount code */
+.gk .gk-promo{display:inline-flex;align-items:center;gap:14px;margin:26px auto 0;padding:14px 26px;border-radius:999px;border:1.5px dashed rgba(212,169,78,.7);background:rgba(212,169,78,.10);color:#fff;font-size:clamp(17px,2vw,22px);line-height:1.2}
+.gk .gk-promo b{color:var(--gold);font-weight:800;letter-spacing:.02em}
+.gk .gk-promo__code{font-weight:800;letter-spacing:.08em;color:#111;background:linear-gradient(180deg,var(--gold),var(--gold-deep));padding:6px 14px;border-radius:10px}
+@media (max-width:700px){.gk .gk-promo{flex-wrap:wrap;justify-content:center;text-align:center;padding:12px 18px;gap:8px}}
+
 </style>
+
+<section class="gk-screen gk-welcome" aria-label="Welcome">
+  <div class="gk-welcome__body">
+    <img loading="lazy" decoding="async" decoding="async" class="gk-welcome__logo" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
+    <p class="gk-eyebrow">Physician-led care</p>
+    <h1 class="gk-h1">The beginning of a new you.</h1>
+    <p class="gk-lede">Hormones, weight, longevity and more, with a licensed physician reviewing every step. Pick your goal and get started in minutes.</p>
+    <button class="gk-btn gk-btn--gold gk-pulse" data-go="goals">Tap to get started
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <div class="gk-promo"><b>10% OFF</b><span>Use code</span><span class="gk-promo__code">JBfit</span><span>at checkout</span></div>
+  </div>
+</section>
+
+<section class="gk-screen gk-goals" aria-label="Choose your goal">
+  <div class="gk-bar">
+    <img loading="lazy" decoding="async" decoding="async" src="https://gplxlife.com/wp-content/themes/gplx-signal-theme/assets/images/wordmark-v3.png" alt="Genesis Longevity &amp; Wellness">
+    <button class="gk-link" data-go="welcome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>Start over</button>
+  </div>
+  <div class="gk-goals__head">
+    <h2 class="gk-h2">What brings you in today?</h2>
+    <p class="gk-sub">Tap the goal that fits you best. You can change it later.</p>
+  </div>
+  <div class="gk-grid" id="gk-grid"></div>
+</section>
+
+<div class="gk-idle" id="gk-idle" role="dialog" aria-modal="true" aria-labelledby="gk-idle-t">
+  <div class="gk-idle__panel">
+    <h3 id="gk-idle-t">Still there?</h3>
+    <p>This screen resets in <span class="gk-idle__count" id="gk-idle-n">15</span> seconds.</p>
+    <button class="gk-btn gk-btn--gold" data-act="stay">I&rsquo;m still here</button>
+  </div>
+</div>
+
+<script>
+/* Kiosk products (shop.gplxlife.com product IDs). */
+window.GPLX_KIOSK_DATA = {"trt":{"t":"TRT & HRT","line":"Hormone therapy for men and women","items":[{"t":"Signature TRT Membership","d":"Male testosterone replacement therapy","p":"$199/mo","c":false,"v":[{"l":"Membership","id":"6ac8dbb3ccdbec6c47d16ac2"}]},{"t":"Signature HRT Membership","d":"Female hormone replacement therapy","p":"$250.00","c":false,"v":[{"l":"Membership","id":"6ac8db79e2e4ec46aebd7bf7"}]},{"t":"TRT Initial Package","d":"Starter package for testosterone therapy","p":"$228.00","c":true,"v":[{"l":"Order","id":"6acd3053945f28f3f5b0a509"}]},{"t":"Testosterone Cypionate","d":"200 mg/mL · 10 mL vial","p":"$149.00","c":true,"v":[{"l":"Order","id":"6ac8db7515dafb910f5d237b"}]},{"t":"Enclomiphene","d":"12.5 or 50 mg capsules · 30 count","p":"$135.45","c":true,"v":[{"l":"Order","id":"6ac8db7840b7b9e4080c6974"}]},{"t":"Clomiphene","d":"25 or 50 mg capsules · 30 count","p":"$69.00","c":true,"v":[{"l":"Order","id":"6ac8db6cd444536f78fdf038"}]},{"t":"Anastrozole","d":"0.5 or 1 mg capsules · 30 count","p":"$45.00","c":true,"v":[{"l":"Order","id":"6ac8db6f3418badd9425332a"}]},{"t":"Estradiol","d":"2, 4 or 6 mg capsules · 30 count","p":"$70.00","c":true,"v":[{"l":"Order","id":"6ac8db77d444536f78fdf10f"}]},{"t":"Biest / Progesterone / Testosterone Cream","d":"30 or 60 gm","p":"$111.30","c":true,"v":[{"l":"Order","id":"6ac8db50e2e4ec46aebd7765"}]},{"t":"Biest / Testosterone Cream","d":"Biest 0.25 / Testosterone 2.5 mg/gm","p":"$75.00","c":true,"v":[{"l":"Order","id":"6ac8db51e773148217211f82"}]},{"t":"Testosterone Vaginal Cream","d":"90 gm","p":"$111.30","c":true,"v":[{"l":"Order","id":"6ac8db550d600f34df7bd9a5"}]},{"t":"Armour Thyroid","d":"15 or 180 mg tablets · 30 count","p":"$108.00","c":true,"v":[{"l":"Order","id":"6ac8db6d15dafb910f5d22c1"}]},{"t":"NP Thyroid","d":"30 or 60 mg tablets · 30 count","p":"$81.90","c":true,"v":[{"l":"Order","id":"6ac8db6a15dafb910f5d226d"}]},{"t":"Oxandrolone","d":"12.5, 25 or 50 mg troches · 30 count","p":"$207.90","c":true,"v":[{"l":"Order","id":"6ac8db69d5f171cdc0dd294d"}]}]},"weight-loss":{"t":"Weight Loss","line":"GLP-1 care with physician oversight","items":[{"t":"Tirzepatide + B12","d":"10, 20, 30 or 60 mg","p":"$132.30","c":true,"v":[{"l":"One-time","id":"6ac8db6340b7b9e4080c67a2"},{"l":"Monthly","id":"6ac8db650d600f34df7bdadb","p":"$132.30/mo"}]},{"t":"Tirzepatide + B3","d":"20, 30 or 60 mg","p":"$151.20","c":true,"v":[{"l":"One-time","id":"6ac8db52993899cd948f8d94"},{"l":"Monthly","id":"6ac8db5415dafb910f5d2081","p":"$150.00/mo"}]},{"t":"Semaglutide + B12","d":"2 to 10 mg options","p":"$346.50","c":true,"v":[{"l":"One-time","id":"6ac8dbb08f84763a60325c49"},{"l":"Monthly","id":"6ac8dbae0d600f34df7be1d3","p":"$75.60/mo"}]},{"t":"Tirzepatide 15 mg","d":"3 mL vial","p":"$499.00","c":false,"v":[{"l":"Order","id":"6ac8db83a8539a18f01ac27d"}]},{"t":"Tirzepatide 30 mg","d":"3 mL vial","p":"$210.00","c":true,"v":[{"l":"Order","id":"6ac8db8489834a8d23c603bf"}]},{"t":"Tirzepatide 60 mg","d":"3 mL vial","p":"$388.50","c":true,"v":[{"l":"Order","id":"6ac8db854dcf76d656d3e462"}]}]},"peptide-therapy":{"t":"Health & Vitality","line":"NAD+, peptides and wellness","items":[{"t":"NAD+ 500 mg","d":"10 mL vial","p":"$180.00","c":false,"v":[{"l":"Order","id":"6ac8db9f3418badd942537e3"}]},{"t":"NAD+ 1000 mg","d":"10 mL vial","p":"$189.00","c":false,"v":[{"l":"Order","id":"6ac8dba4ad26af42eacd4cae"}]},{"t":"Glutathione","d":"","p":"$124.00","c":true,"v":[{"l":"Order","id":"6ac8dbabe7731482172127bd"}]},{"t":"Tesamorelin 20 mg","d":"5 mL · liquid","p":"$142.80","c":true,"v":[{"l":"Order","id":"6ac8db600d600f34df7bda6a"}]},{"t":"Tesamorelin 10 mg","d":"3 mL vial","p":"$140.00","c":false,"v":[{"l":"Order","id":"6ac8db70864cb9553f74cbde"}]},{"t":"PT-141 30 mg","d":"5 mL · liquid","p":"$123.90","c":true,"v":[{"l":"Order","id":"6ac8db5f8f84763a60325301"}]},{"t":"BPC-157 5 mg","d":"3 mL vial","p":"$109.20","c":false,"v":[{"l":"Order","id":"6ac8db81ad26af42eacd48c3"}]},{"t":"BPC-157 10 mg","d":"3 mL vial","p":"$151.20","c":false,"v":[{"l":"Order","id":"6ac8dba2864cb9553f74d174"}]},{"t":"BPC-157 15 mg","d":"5 mL · liquid","p":"$123.90","c":true,"v":[{"l":"Order","id":"6ac8db56993899cd948f8e12"}]},{"t":"CJC-1295 with DAC","d":"5 mg · 3 mL vial","p":"$100.80","c":false,"v":[{"l":"Order","id":"6ac8db92e773148217212520"}]},{"t":"CJC-1295 without DAC","d":"5 mg · 3 mL vial","p":"$100.80","c":false,"v":[{"l":"Order","id":"6ac8db91757ce99081234d13"}]},{"t":"CJC-1295 / Ipamorelin","d":"5 / 5 mg · 3 mL vial","p":"$129.00/mo","c":false,"v":[{"l":"Order","id":"6ac8db98ccdbec6c47d1687e"}]},{"t":"CJC-1295 / Ipamorelin","d":"6 / 12 mg · 5 mL · liquid","p":"$145.00","c":true,"v":[{"l":"Order","id":"6ac8db573418badd9425310c"}]},{"t":"GHK-Cu 50 mg","d":"3 mL vial","p":"$92.00","c":false,"v":[{"l":"Order","id":"6ac8db95aa711274ec092974"}]},{"t":"GHK-Cu 50 mg","d":"5 mL · liquid","p":"$115.00","c":true,"v":[{"l":"Order","id":"6ac8db5aaa711274ec0923c0"}]},{"t":"GLOW","d":"BPC-157 / GHK-Cu / TB-500 · 3 mL","p":"$277.20","c":false,"v":[{"l":"Order","id":"6ac8db94ccdbec6c47d1678e"}]},{"t":"KLOW","d":"BPC-157 / GHK-Cu / KPV / TB-500 · 5 mL liquid","p":"$201.60","c":true,"v":[{"l":"Order","id":"6ac8db5d3418badd9425318d"}]},{"t":"KLOW","d":"BPC-157 / GHK-Cu / TB-500 / KPV · 3 mL","p":"$257.00/mo","c":false,"v":[{"l":"Order","id":"6ac8db93993899cd948f9291"}]}]},"medical":{"t":"Medical Services","line":"Doctor consults, labs and supplies","items":[{"t":"Online Doctor Consult","d":"Reviewed by a licensed physician","p":"$72.00","c":false,"v":[{"l":"Book","id":"6ac8db4ead26af42eacd4541"}]},{"t":"Live Video Consult","d":"Talk with a physician live","p":"$79.80","c":false,"v":[{"l":"Book","id":"6ac8dba8757ce99081234f50"}]},{"t":"Rythm Labs Home Kit","d":"At-home lab kit","p":"$99.00","c":false,"v":[{"l":"Order","id":"6ac8db66757ce9908123497a"}]},{"t":"Starter Kit","d":"10 syringes, 10 swabs, bacteriostatic water","p":"$31.40","c":false,"v":[{"l":"Order","id":"6ac8dbb5757ce99081235063"}]},{"t":"Starter Kit (no water)","d":"10 syringes, 10 swabs","p":"$28.00","c":false,"v":[{"l":"Order","id":"6ac8db7fccdbec6c47d164cc"}]},{"t":"Bacteriostatic Water","d":"One 10 mL vial","p":"$20.90","c":false,"v":[{"l":"Order","id":"6ac8dbb8864cb9553f74d2f1"}]},{"t":"Syringes","d":"Box of 100","p":"$62.90","c":false,"v":[{"l":"Order","id":"6ac8dbb7a8539a18f01ac811"}]},{"t":"Alcohol Swabs","d":"100 count","p":"$31.40","c":false,"v":[{"l":"Order","id":"6ac8dbb640b7b9e4080c6ffb"}]}]}};
+</script>
 <script>
 (function(){
   var root = document.getElementById("gk"), grid = document.getElementById("gk-grid"); if(!root || !grid) return;
@@ -4942,39 +4781,42 @@ window.GPLX_KIOSK_DATA = {"trt":{"t":"TRT & HRT","line":"Hormone therapy for men
   window.addEventListener("blur", function(){ if(root.getAttribute("data-screen") === "shop"){ bump(); } });
 })();
 </script>
-
-<style>
-/* v19: start-screen discount code */
-.gk .gk-promo{display:inline-flex;align-items:center;gap:14px;margin:26px auto 0;padding:14px 26px;border-radius:999px;border:1.5px dashed rgba(212,169,78,.7);background:rgba(212,169,78,.10);color:#fff;font-size:clamp(17px,2vw,22px);line-height:1.2}
-.gk .gk-promo b{color:var(--gold);font-weight:800;letter-spacing:.02em}
-.gk .gk-promo__code{font-weight:800;letter-spacing:.08em;color:#111;background:linear-gradient(180deg,var(--gold),var(--gold-deep));padding:6px 14px;border-radius:10px}
-@media (max-width:700px){.gk .gk-promo{flex-wrap:wrap;justify-content:center;text-align:center;padding:12px 18px;gap:8px}}
-</style>
 <script>
+/* Screens and the inactivity reset: after 60s with no touch ask "Still there?", then go back to the welcome screen. */
 (function(){
-  var body = document.querySelector("#gk .gk-welcome__body"); if(!body) return;
-  var p = document.createElement("div"); p.className = "gk-promo";
-  p.innerHTML = '<b>10% OFF</b><span>Use code</span><span class="gk-promo__code">JBfit</span><span>at checkout</span>';
-  var btn = body.querySelector("[data-go=goals]");
-  if(btn){ btn.insertAdjacentElement("afterend", p); } else { body.appendChild(p); }
-})();
-</script>
-
-<script>
-/* v14: diagnostic badge. Only shows with ?debug=1. Tells whether the shop's footer script is running inside the kiosk frame. */
-(function(){
-  if(!/[?&]debug=1\b/.test(location.search)) return;
-  var b = document.createElement("div");
-  b.style.cssText = "position:fixed;left:12px;bottom:12px;z-index:2147483647;padding:10px 16px;border-radius:999px;font:700 15px/1.2 -apple-system,system-ui,sans-serif;background:#F5C04A;color:#111;box-shadow:0 4px 16px rgba(0,0,0,.4)";
-  b.textContent = "Shop script: not detected yet (open a tile and scroll the shop)";
-  document.body.appendChild(b);
-  window.addEventListener("message", function(e){
-    if(e.origin !== "https://shop.gplxlife.com" || !e.data || !e.data.gplx) return;
-    b.style.background = "#3BB273"; b.style.color = "#fff";
-    b.textContent = "Shop script: RUNNING ✓";
+  var root = document.getElementById("gk"), idleTimer = null, countTimer = null, IDLE_MS = 60000, COUNT_S = 15;
+  var idle = document.getElementById("gk-idle"), out = document.getElementById("gk-idle-n");
+  function track(e, p){ try{ if(window.gplx && window.gplx.track){ window.gplx.track(e, p||{}); } }catch(x){} }
+  function show(screen){ root.setAttribute("data-screen", screen); armIdle(); }
+  function armIdle(ms){
+    clearTimeout(idleTimer);
+    if(root.getAttribute("data-screen") === "welcome") return;
+    idleTimer = setTimeout(showIdle, ms || IDLE_MS);
+  }
+  function showIdle(){
+    var n = COUNT_S; out.textContent = n; idle.classList.add("is-on");
+    clearInterval(countTimer);
+    countTimer = setInterval(function(){
+      n--; out.textContent = n;
+      if(n <= 0){ hideIdle(); show("welcome"); track("kiosk_idle_reset",{}); }
+    }, 1000);
+  }
+  function hideIdle(){ clearInterval(countTimer); idle.classList.remove("is-on"); }
+  root.addEventListener("click", function(e){
+    var el = e.target.closest("[data-go],[data-act]"); if(!el) return;
+    if(el.hasAttribute("data-go")){ show(el.getAttribute("data-go")); if(el.getAttribute("data-go") === "goals") track("kiosk_start",{}); return; }
+    if(el.getAttribute("data-act") === "stay"){ hideIdle(); armIdle(); }
   });
+  ["touchstart","pointerdown","keydown"].forEach(function(ev){
+    document.addEventListener(ev, function(){ if(!idle.classList.contains("is-on")) armIdle(); }, {passive:true});
+  });
+  /* Coming back with the Back button always lands on a fresh welcome screen. */
+  window.addEventListener("pageshow", function(e){ if(e.persisted){ hideIdle(); show("welcome"); } });
+  document.addEventListener("gesturestart", function(e){ e.preventDefault(); });
+  show("welcome");
 })();
 </script>
+</div>
 </div>
 </main>
 
