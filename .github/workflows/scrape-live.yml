@@ -1,4 +1,5 @@
 name: Scrape live gplxlife.com
+# rerun: verify kiosk 1.1.0
 on:
   push:
     paths:
