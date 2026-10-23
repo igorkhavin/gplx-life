@@ -16,14 +16,14 @@
     "6ac8db95aa711274ec092974",
     "6ac8db5aaa711274ec0923c0",
     "6ac8db94ccdbec6c47d1678e",
-    "6ac8db8015dafb910f5d2437",
     "6ac8dbabe7731482172127bd",
+    "6ac8db8015dafb910f5d2437",
     "6ac8db7e89834a8d23c6032a",
     "6ac8db5d3418badd9425318d",
     "6ac8db93993899cd948f9291",
-    "6ac8dbacd444536f78fdf602",
-    "6ac8dbad4dcf76d656d3e8db",
     "6ac8dbb406180fc50e055357",
+    "6ac8dbad4dcf76d656d3e8db",
+    "6ac8dbacd444536f78fdf602",
     "6ac8dba4ad26af42eacd4cae",
     "6ac8db9f3418badd942537e3",
     "6ac8db8bfd6e88b1d4f48ada",
@@ -529,26 +529,26 @@
    "hasPrices": true
   },
   {
-   "_id": "6ac8db8015dafb910f5d2437",
+   "_id": "6ac8dbabe7731482172127bd",
    "name": "Glutathione",
    "productType": "PHYSICAL",
-   "type": "recurring",
+   "type": "one_time",
    "isLabelEnabled": true,
+   "label": {
+    "title": "Consult Required"
+   },
    "collectionIds": [
     "6ac8ddff3418badd9425659d"
    ],
    "rating": [],
    "image": "https://assets.cdn.filesafe.space/m2m0fILRjYwqHwEndk7z/media/6ac8dd14bbad531ac8510ca8.png",
-   "label": {
-    "title": "Consult Required"
-   },
-   "isAvailable": false,
-   "amount": 145,
-   "maxAmount": 145,
+   "isAvailable": true,
+   "amount": 120,
+   "maxAmount": 120,
    "currency": "USD",
    "compareAtPrice": null,
    "hasVariants": false,
-   "hasPrices": false
+   "hasPrices": true
   },
   {
    "_id": "6ac8db7e89834a8d23c6032a",
@@ -573,26 +573,26 @@
    "hasPrices": true
   },
   {
-   "_id": "6ac8dbabe7731482172127bd",
+   "_id": "6ac8db8015dafb910f5d2437",
    "name": "Glutathione",
    "productType": "PHYSICAL",
-   "type": "one_time",
+   "type": "recurring",
    "isLabelEnabled": true,
-   "label": {
-    "title": "Consult Required"
-   },
    "collectionIds": [
     "6ac8ddff3418badd9425659d"
    ],
    "rating": [],
    "image": "https://assets.cdn.filesafe.space/m2m0fILRjYwqHwEndk7z/media/6ac8dd14bbad531ac8510ca8.png",
-   "isAvailable": true,
-   "amount": 120,
-   "maxAmount": 120,
+   "label": {
+    "title": "Consult Required"
+   },
+   "isAvailable": false,
+   "amount": 145,
+   "maxAmount": 145,
    "currency": "USD",
    "compareAtPrice": null,
    "hasVariants": false,
-   "hasPrices": true
+   "hasPrices": false
   },
   {
    "_id": "6ac8db74ad26af42eacd482c",
@@ -859,26 +859,26 @@
    "hasPrices": true
   },
   {
-   "_id": "6ac8dbb406180fc50e055357",
+   "_id": "6ac8dbacd444536f78fdf602",
    "name": "NAD+",
    "productType": "PHYSICAL",
-   "type": "one_time",
+   "type": "recurring",
    "isLabelEnabled": true,
-   "label": {
-    "title": "Consult Required"
-   },
    "collectionIds": [
     "6ac8ddff3418badd9425659d"
    ],
    "rating": [],
    "image": "https://assets.cdn.filesafe.space/m2m0fILRjYwqHwEndk7z/media/6ac8dd16195f9172ed1008f0.png",
+   "label": {
+    "title": "Consult Required"
+   },
    "isAvailable": true,
    "amount": 185,
    "maxAmount": 185,
    "currency": "USD",
    "compareAtPrice": null,
    "hasVariants": false,
-   "hasPrices": true
+   "hasPrices": false
   },
   {
    "_id": "6ac8dbad4dcf76d656d3e8db",
